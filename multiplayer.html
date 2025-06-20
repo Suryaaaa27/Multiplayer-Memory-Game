@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multiplayer Memory Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header style="display: flex; justify-content: flex-start; gap: 30px; padding: 10px;">
+  <div id="player1-container" class="player-box" style="display: flex; align-items: center; gap: 10px;">
+    <img id="player1-pic" src="https://www.gravatar.com/avatar/?d=mp" alt="Player 1" width="60" height="60" style="border-radius: 50%; border: 2px solid #2196f3;">
+    <span id="player1-name">Player 1: Guest</span>
+  </div>
+  <div id="player2-container" class="player-box" style="display: flex; align-items: center; gap: 10px;">
+    <img id="player2-pic" src="https://www.gravatar.com/avatar/?d=mp" alt="Player 2" width="60" height="60" style="border-radius: 50%; border: 2px solid #e91e63;">
+    <span id="player2-name">Player 2: Guest</span>
+  </div>
+</header>
+
+
+  <h1 style="text-align: center;">🧠 Multiplayer Memory Game</h1>
+
+  <div class="controls" style="justify-content: center;">
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty">
+    <option value="easy">Easy (4x2)</option>
+    <option value="medium" selected>Medium (4x4)</option>
+    <option value="hard">Hard (6x6)</option>
+    </select>
+
+    <button id="restart-btn">🔁 Restart</button>
+  </div>
+
+  <div class="stats" style="text-align: center;">
+    <p>🧮 Moves: <span id="move-counter">0</span></p>
+    <p>⏱️ Time: <span id="timer">0</span> seconds</p>
+    <p id="turn-indicator">🧭 Turn: Player 1</p>
+    <p id="score-board">🎯 Scores - Player 1: 0 | Player 2: 0</p>
+  </div>
+
+  <div class="game-board"></div>
+  <p id="win-message" style="text-align: center;"></p>
+
+  <div class="susu" style="text-align: center; margin-top: 20px;">
+    <a href="leaderboard.html">🥇 Leaderboard</a>
+  </div>
+
+  <!-- Sound Effects -->
+  <audio id="flip-sound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
+  <audio id="match-sound" src="https://www.fesliyanstudios.com/play-mp3/399"></audio>
+  <audio id="turn-sound" src="https://www.fesliyanstudios.com/play-mp3/352"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

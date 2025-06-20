@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+</head>
+<body>
+  <h1>🏆Leaderboard</h1>
+
+  <table id="leaderboard">
+    <thead>
+      <tr>
+        <th>Avatar 1</th>
+        <th>Player 1</th>
+        <th>Score</th>
+        <th>Avatar 2</th>
+        <th>Player 2</th>
+        <th>Score</th>
+        <th>Winner</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboard-body"></tbody>
+  </table>
+
+  <div class="susu">
+    <a href="multiplayer.html">🔁 Play Again</a>
+  </div>
+
+  <script>
+    const scores = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    scores.sort((a, b) => (b.winnerScore || 0) - (a.winnerScore || 0));
+
+    const tbody = document.getElementById('leaderboard-body');
+
+    scores.forEach(entry => {
+      const player1 = entry.player1 || {};
+      const player2 = entry.player2 || {};
+      const winner = entry.winner || "Draw";
+
+      const avatar1 = player1.email ? `https://www.gravatar.com/avatar/${md5(player1.email.trim().toLowerCase())}?d=identicon` : "https://www.gravatar.com/avatar/?d=mp";
+      const avatar2 = player2.email ? `https://www.gravatar.com/avatar/${md5(player2.email.trim().toLowerCase())}?d=identicon` : "https://www.gravatar.com/avatar/?d=mp";
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td><img src="${avatar1}" alt="avatar1" /></td>
+        <td>${player1.name || "Player 1"}</td>
+        <td>${player1.score || 0}</td>
+        <td><img src="${avatar2}" alt="avatar2" /></td>
+        <td>${player2.name || "Player 2"}</td>
+        <td>${player2.score || 0}</td>
+        <td><strong>${winner}</strong></td>
+        <td>${entry.date || ""}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
