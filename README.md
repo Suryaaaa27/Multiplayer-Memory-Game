@@ -43,8 +43,7 @@ A fun and interactive **2-player Emoji Memory Game** built using **HTML, CSS, an
 ---
 
 ## 🚀 Getting Started
-
-### 1. Clone the Repo
+ 1. Clone the Repo
 ```bash
 git clone https://github.com/your-username/multiplayer-memory-game.git
 cd multiplayer-memory-game
